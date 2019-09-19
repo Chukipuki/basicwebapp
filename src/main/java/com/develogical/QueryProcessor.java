@@ -14,19 +14,33 @@ public class QueryProcessor {
         }else if(query.toLowerCase().contains("name")){
             return "superchu";
         }else if (query.toLowerCase().contains("largest")){
-            Pattern number = Pattern.compile("\\d+");
-            Matcher n = number.matcher(query.toLowerCase());
-            List<Integer> nums = new ArrayList<>();
-            while (n.find()){
-                nums.add(Integer.parseInt(n.group()));
-            }
+            List<Integer> nums = getListOfIntegers(query);
 
             int max = nums.stream()
                     .mapToInt(v -> v)
                     .max().orElseThrow(NoSuchElementException::new);
 
             return String.valueOf(max);
+        }else if (query.toLowerCase().contains("plus")){
+            List<Integer> listOfIntegers = getListOfIntegers(query);
+
+            return String.valueOf(listOfIntegers.stream()
+                    .mapToInt(v -> v)
+                    .sum());
         }
         return "";
+    }
+
+    private List<Integer> getListOfIntegers(String query) {
+        String afterRequestId = query.substring(9);
+
+
+        Pattern number = Pattern.compile("\\d+");
+        Matcher n = number.matcher(afterRequestId.toLowerCase());
+        List<Integer> nums = new ArrayList<>();
+        while (n.find()){
+            nums.add(Integer.parseInt(n.group()));
+        }
+        return nums;
     }
 }
