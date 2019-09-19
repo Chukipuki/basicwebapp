@@ -45,6 +45,21 @@ public class QueryProcessorTest {
         assertThat(queryProcessor.process("62dc3430: what is 14 multiplied by 4"), is("56"));
     }
 
+    @Test
+    public void startJamesBond() throws Exception {
+        assertThat(queryProcessor.process("159e0950: who played James Bond in the film Dr No"), containsString("Sean Connery"));
+    }
+
+    @Test
+    public void isCubeAndSquare() throws Exception {
+        assertThat(queryProcessor.process("5d429720: which of the following numbers is both a square and a cube: 225, 49, 2500, 550"), is(""));
+    }
+
+    @Test
+    public void isParis() throws Exception {
+        assertThat(queryProcessor.process("a4327740: which city is the Eiffel tower in"), containsString("Paris"));
+    }
+
 
 
 }

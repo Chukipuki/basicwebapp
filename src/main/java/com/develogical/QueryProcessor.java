@@ -31,6 +31,12 @@ public class QueryProcessor {
             List<Integer> listOfIntegers = getListOfIntegers(query);
 
             return String.valueOf(listOfIntegers.get(0) * listOfIntegers.get(1));
+        }else if (query.toLowerCase().contains("james bond")){
+            return "Sean Connery";
+
+        }
+        else if (query.toLowerCase().contains("eiffel tower")){
+            return "Paris";
         }
         return "";
     }
