@@ -40,6 +40,11 @@ public class QueryProcessorTest {
         assertThat(queryProcessor.process("5757e270: what is 8 plus 8"), is("16"));
     }
 
+    @Test
+    public void ifMultipleCorrectly() throws Exception {
+        assertThat(queryProcessor.process("62dc3430: what is 14 multiplied by 4"), is("56"));
+    }
+
 
 
 }

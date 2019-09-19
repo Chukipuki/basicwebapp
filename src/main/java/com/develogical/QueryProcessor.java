@@ -27,17 +27,21 @@ public class QueryProcessor {
             return String.valueOf(listOfIntegers.stream()
                     .mapToInt(v -> v)
                     .sum());
+        }else  if (query.toLowerCase().contains("multiplied")){
+            List<Integer> listOfIntegers = getListOfIntegers(query);
+
+            return String.valueOf(listOfIntegers.get(0) * listOfIntegers.get(1));
         }
         return "";
     }
 
     private List<Integer> getListOfIntegers(String query) {
         String afterRequestId = query.substring(9);
-
-
         Pattern number = Pattern.compile("\\d+");
         Matcher n = number.matcher(afterRequestId.toLowerCase());
+
         List<Integer> nums = new ArrayList<>();
+
         while (n.find()){
             nums.add(Integer.parseInt(n.group()));
         }
